@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বয়স ক্যালকুলেটর</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* কালার প্যালেট - মডার্ন ডার্ক */
+            --bg-body: #0f172a;       /* খুব গাঢ় নীল */
+            --bg-card: #1e293b;       /* স্লেট কালার */
+            --primary: #6366f1;       /* ইন্ডিগো */
+            --primary-hover: #4f46e5;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* মেইন কন্টেইনার */
+        .card {
+            background-color: var(--bg-card);
+            width: 100%;
+            max-width: 480px;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 0 2rem 0;
+            color: var(--text-main);
+        }
+
+        /* ইনপুট সেকশন */
+        .input-wrapper {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* কাস্টম ডেট ইনপুট স্টাইল */
+        input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            background-color: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1); /* ক্যালেন্ডার আইকন সাদা করা */
+            cursor: pointer;
+        }
+
+        input[type="date"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        /* বাটন */
+        .btn-calc {
+            width: 100%;
+            padding: 16px;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-calc:active {
+            transform: scale(0.98);
+        }
+
+        /* রেজাল্ট সেকশন */
+        #result-section {
+            display: none; /* প্রথমে লুকানো থাকবে */
+            margin-top: 30px;
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-title {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* গ্রিড লেআউট */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-box {
+            background: #253045;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* নেক্সট বার্থডে */
+        .next-bday {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* মোটিভেশনাল টেক্সট */
+        .quote {
+            font-size: 1rem;
+            color: #e2e8f0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>বয়স ক্যালকুলেটর</h1>
+
+    <div class="input-wrapper">
+        <label for="birthdate">আপনার জন্ম তারিখ নির্বাচন করুন</label>
+        <input type="date" id="birthdate">
+    </div>
+
+    <button class="btn-calc" onclick="calculateAge()">বয়স দেখুন</button>
+
+    <div id="result-section">
+        <span class="result-title">আপনার বর্তমান বয়স</span>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="stat-number" id="res-years">0</span>
+                <span class="stat-label">বছর</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" id="res-months">0</span>
+                <span class="stat-label">মাস</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" id="res-days">0</span>
+                <span class="stat-label">দিন</span>
+            </div>
+        </div>
+
+        <div class="next-bday">
+            🎂 পরবর্তী জন্মদিন: <span id="next-bday-days" style="font-weight:bold; font-family:'Poppins';">0</span> দিন পর
+        </div>
+
+        <p class="quote" id="msg-text">...</p>
+    </div>
+</div>
+
+<script>
+    function calculateAge() {
+        const input = document.getElementById('birthdate').value;
+        const resultSection = document.getElementById('result-section');
+
+        if (!input) {
+            alert("দয়া করে ক্যালেন্ডার থেকে জন্ম তারিখ সিলেক্ট করুন।");
+            return;
+        }
+
+        const birthDate = new Date(input);
+        const today = new Date();
+
+        // ভবিষ্যৎ তারিখ চেক
+        if (birthDate > today) {
+            alert("ভবিষ্যতের তারিখ দেওয়া যাবে না!");
+            return;
+        }
+
+        // ক্যালকুলেশন লজিক
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+
+        if (days < 0) {
+            months--;
+            days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        // আউটপুট সেট করা
+        resultSection.style.display = 'block';
+        
+        // এনিমেশন ইফেক্ট ছাড়া ডাইরেক্ট ভ্যালু
+        document.getElementById('res-years').innerText = years;
+        document.getElementById('res-months').innerText = months;
+        document.getElementById('res-days').innerText = days;
+
+        // নেক্সট বার্থডে ক্যালকুলেশন
+        const nextBday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+        if (today > nextBday) {
+            nextBday.setFullYear(nextBday.getFullYear() + 1);
+        }
+        const oneDay = 24 * 60 * 60 * 1000;
+        const daysLeft = Math.ceil((nextBday - today) / oneDay);
+        
+        // বার্থডে মেসেজ
+        const bdayElem = document.getElementById('next-bday-days');
+        if (daysLeft === 365 || daysLeft === 0) {
+            document.querySelector('.next-bday').innerHTML = "🎉 আজ আপনার জন্মদিন! শুভ জন্মদিন! 🎂";
+        } else {
+            bdayElem.innerText = daysLeft;
+        }
+
+        // মোটিভেশনাল মেসেজ
+        updateMessage(years);
+    }
+
+    function updateMessage(age) {
+        const msgBox = document.getElementById('msg-text');
+        let text = "";
+
+        if (age < 18) text = "পড়াশোনা এবং নতুন কিছু শেখার এখনই সেরা সময়।";
+        else if (age < 30) text = "ক্যারিয়ার গড়ার এই সময়ে প্রতিটি পদক্ষেপ গুরুত্বপূর্ণ।";
+        else if (age < 50) text = "অভিজ্ঞতা আর দক্ষতার সমন্বয়ে এগিয়ে যান সাফল্যের দিকে।";
+        else text = "নিজের শরীরের যত্ন নিন এবং প্রতিটি মুহূর্ত আনন্দের সাথে কাটান।";
+
+        msgBox.innerText = text;
+    }
+</script>
+
+</body>
+</html>
