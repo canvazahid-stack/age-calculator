@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Life Analyzer - Advanced Age Calculator</title>
+    <title>Life Analyzer - Created by Md. Zahid Hasan</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -12,15 +12,15 @@
         :root {
             --bg-body: #0f172a;
             --bg-card: #1e293b;
-            --primary: #0ea5e9;
-            --primary-glow: rgba(14, 165, 233, 0.4);
-            --accent-pink: #ec4899;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --accent-pink: #f43f5e;
             --accent-green: #10b981;
-            --accent-purple: #8b5cf6;
+            --accent-purple: #a855f7;
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --border: #334155;
-            --radius: 20px;
+            --radius: 24px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,110 +37,85 @@
             padding: 40px 15px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-        }
+        .container { width: 100%; max-width: 550px; }
 
-        .header-text { text-align: center; margin-bottom: 30px; }
-        .header-text h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; background: linear-gradient(to right, #0ea5e9, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
-        .header-text p { color: var(--text-sub); font-size: 1rem; }
+        .header-text { text-align: center; margin-bottom: 35px; }
+        .header-text h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .header-text p { color: var(--text-sub); font-size: 1.1rem; }
 
         .input-card {
-            background-color: var(--bg-card);
-            padding: clamp(20px, 5vw, 30px);
-            border-radius: var(--radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border);
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
+            background-color: var(--bg-card); padding: 30px; border-radius: var(--radius);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid var(--border);
+            margin-bottom: 30px; position: relative; overflow: hidden;
         }
 
-        .input-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, var(--primary), var(--accent-purple)); }
+        .input-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(to right, var(--primary), var(--accent-purple)); }
 
-        label { display: block; color: var(--text-sub); margin-bottom: 12px; font-size: 1rem; font-weight: 600; text-align: center;}
+        label { display: block; color: var(--text-sub); margin-bottom: 15px; font-size: 1.1rem; font-weight: 600; text-align: center;}
 
-        /* Mobile Optimized Date Input */
-        .date-input-wrapper {
-            position: relative;
-            width: 100%;
-        }
         input[type="date"] {
-            width: 100%; padding: 18px 20px; font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; text-align: center;
-            background-color: #0f172a; border: 2px solid var(--border); border-radius: 12px; color: white; outline: none; transition: 0.3s; cursor: pointer;
-            appearance: none; -webkit-appearance: none;
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator { 
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+            width: 100%; padding: 20px; font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; text-align: center;
+            background-color: #0f172a; border: 2px solid var(--border); border-radius: 15px; color: white; outline: none; transition: 0.3s; cursor: pointer;
         }
         input[type="date"]:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         .btn-main {
-            width: 100%; padding: 18px; font-family: 'Hind Siliguri', sans-serif; font-size: 1.2rem; font-weight: 700;
-            color: white; background: linear-gradient(135deg, var(--primary), #3b82f6); border: none; border-radius: 12px; cursor: pointer; transition: 0.3s; margin-top: 20px; box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+            width: 100%; padding: 18px; font-family: 'Hind Siliguri', sans-serif; font-size: 1.25rem; font-weight: 700;
+            color: white; background: linear-gradient(135deg, var(--primary), #2563eb); border: none; border-radius: 15px; cursor: pointer; transition: 0.3s; margin-top: 20px;
         }
-        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(14, 165, 233, 0.4); }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3); }
 
         /* Result Area */
         #capture-area {
-            background-color: var(--bg-card); padding: clamp(20px, 5vw, 30px); border-radius: var(--radius); border: 1px solid var(--border); display: none; position: relative;
+            background-color: var(--bg-card); padding: 35px 25px; border-radius: var(--radius); border: 1px solid var(--border); display: none; position: relative;
         }
 
-        .result-title { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 20px; border-bottom: 1px dashed var(--border); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .result-title { font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 25px; border-bottom: 1px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
 
-        /* Grid For Age */
-        .age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
-        .age-box { background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); padding: 15px 5px; border-radius: 15px; text-align: center; }
-        .age-num { display: block; font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 6vw, 2.2rem); font-weight: 800; color: var(--primary); line-height: 1.1; }
-        .age-lbl { font-size: 0.85rem; color: var(--text-sub); }
+        /* Age Grid */
+        .age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px; }
+        .age-box { background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); padding: 20px 5px; border-radius: 18px; text-align: center; }
+        .age-num { display: block; font-family: 'Poppins', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--primary); line-height: 1; margin-bottom: 5px; }
+        .age-lbl { font-size: 0.9rem; color: var(--text-sub); font-weight: 500; }
 
-        /* Next Birthday Banner */
+        /* Next Birthday */
         .next-bday-banner {
-            background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 25px;
+            background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 15px; padding: 18px; text-align: center; margin-bottom: 30px;
         }
-        .next-bday-title { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
-        .next-bday-val { font-size: 1.3rem; font-weight: 700; color: var(--accent-purple); }
+        .next-bday-title { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 6px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;}
+        .next-bday-val { font-size: 1.4rem; font-weight: 700; color: var(--accent-purple); }
 
-        /* Life Progress Bar */
-        .progress-sec { margin-bottom: 25px; }
-        .progress-top { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-sub); margin-bottom: 8px; }
-        .progress-track { width: 100%; height: 10px; background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-        .progress-fill { height: 100%; background: linear-gradient(to right, var(--accent-pink), #f43f5e); width: 0%; transition: width 1.5s ease-out; border-radius: 10px; box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
-        .progress-note { font-size: 0.8rem; color: #64748b; margin-top: 6px; text-align: right; font-style: italic; }
+        /* Progress Bar */
+        .progress-sec { margin-bottom: 30px; }
+        .progress-top { display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--text-sub); margin-bottom: 10px; font-weight: 500; }
+        .progress-track { width: 100%; height: 12px; background: #0f172a; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .progress-fill { height: 100%; background: linear-gradient(to right, #f43f5e, #fb7185); width: 0%; transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); border-radius: 10px; }
 
-        /* Mind Blowing Stats */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .stat-item { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 15px; border-radius: 12px; }
-        .stat-item.purple { background: rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.2); }
-        .stat-val { font-family: 'Poppins', sans-serif; font-size: clamp(1.2rem, 5vw, 1.4rem); font-weight: 700; color: var(--accent-green); }
-        .stat-item.purple .stat-val { color: var(--accent-purple); }
-        .stat-desc { font-size: 0.85rem; color: var(--text-sub); margin-top: 4px; line-height: 1.4; }
-        .stat-sub-desc { font-size: 0.75rem; color: #475569; margin-top: 3px; font-style: italic;}
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .stat-item { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.15); padding: 18px; border-radius: 15px; }
+        .stat-val { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--accent-green); display: block;}
+        .stat-desc { font-size: 0.85rem; color: var(--text-sub); margin-top: 5px; line-height: 1.4; font-weight: 500; }
 
-        /* Cosmic & Fun Facts */
-        .fact-box { background: #0f172a; border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 12px 12px 0; margin-bottom: 15px; font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; }
-        .fact-box span.hl { color: var(--primary); font-weight: 700; }
+        /* Reality Boxes */
+        .fact-box { background: #0f172a; border-left: 5px solid var(--primary); padding: 18px; border-radius: 0 15px 15px 0; margin-bottom: 15px; font-size: 1rem; line-height: 1.6; color: #e2e8f0; }
+        .fact-box span.hl { color: var(--primary); font-weight: 800; }
 
         .btn-download {
-            width: 100%; padding: 16px; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600;
-            color: white; background: #22c55e; border: none; border-radius: 12px; cursor: pointer; transition: 0.3s; margin-top: 15px; display: none; justify-content: center; align-items: center; gap: 8px;
+            width: 100%; padding: 18px; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700;
+            color: white; background: #10b981; border: none; border-radius: 15px; cursor: pointer; transition: 0.3s; margin-top: 20px; display: none; justify-content: center; align-items: center; gap: 10px;
         }
-        .btn-download:hover { background: #16a34a; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2); }
+        .btn-download:hover { background: #059669; }
 
-        /* Footer & Watermark */
-        .footer-credit { text-align: center; margin-top: 30px; font-size: 0.9rem; color: #64748b; }
-        .footer-credit span { color: var(--primary); font-weight: 700; }
+        /* Watermark Styles */
+        #watermark { display: none; text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #475569; }
+        .wm-text { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .wm-info { font-size: 0.8rem; color: var(--text-sub); font-family: 'Poppins', sans-serif; }
 
-        #watermark { display: none; text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border); }
-        .wm-brand { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
-        .wm-brand span { color: var(--text-main); font-weight: 500; font-size: 0.9rem;}
-        .wm-time { font-size: 0.8rem; color: var(--text-sub); font-family: 'Poppins', sans-serif;}
-
-        /* Mobile Responsiveness */
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .age-box { padding: 10px 2px; }
+            .age-grid { gap: 10px; }
+            .age-num { font-size: 2rem; }
         }
     </style>
 </head>
@@ -149,82 +124,81 @@
     <div class="container">
         <div class="header-text">
             <h1>Life Analyzer 🧬</h1>
-            <p>আপনার জীবনের জানা-অজানা চমৎকার কিছু তথ্য</p>
+            <p>আপনার জীবনের প্রতিটি মুহূর্তের আসল হিসাব</p>
         </div>
 
         <div class="input-card">
-            <label for="birthdate">📅 আপনার জন্ম তারিখ সিলেক্ট করুন</label>
-            <div class="date-input-wrapper">
-                <input type="date" id="birthdate" required>
-            </div>
-            <button class="btn-main" onclick="analyzeLife()">অ্যানালাইজ করুন 🚀</button>
+            <label>📅 আপনার সঠিক জন্ম তারিখটি দিন</label>
+            <input type="date" id="birthdate" required>
+            <button class="btn-main" onclick="analyzeLife()">অ্যানালাইজ শুরু করুন 🚀</button>
         </div>
 
         <div id="capture-area">
             <div class="result-title">
-                <span>আপনার জীবন ডায়েরি</span>
-                <span style="font-size: 0.8rem; background: rgba(14, 165, 233, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 20px;">Life Stats</span>
+                <span>লাইফ রিপোর্ট</span>
+                <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.15); color: var(--primary); padding: 5px 12px; border-radius: 30px; border: 1px solid var(--primary);">STATISTICS</span>
             </div>
 
             <div class="age-grid">
                 <div class="age-box">
-                    <span class="age-num" id="res-years" data-val="0">0</span>
+                    <span class="age-num" id="res-years">0</span>
                     <span class="age-lbl">বছর</span>
                 </div>
                 <div class="age-box">
-                    <span class="age-num" id="res-months" data-val="0">0</span>
+                    <span class="age-num" id="res-months">0</span>
                     <span class="age-lbl">মাস</span>
                 </div>
                 <div class="age-box">
-                    <span class="age-num" id="res-days" data-val="0">0</span>
+                    <span class="age-num" id="res-days">0</span>
                     <span class="age-lbl">দিন</span>
                 </div>
             </div>
 
             <div class="next-bday-banner">
                 <div class="next-bday-title">🎂 পরবর্তী জন্মদিন</div>
-                <div class="next-bday-val" id="next-bday-text">হিসাব করা হচ্ছে...</div>
+                <div class="next-bday-val" id="next-bday-text">...</div>
             </div>
 
             <div class="progress-sec">
                 <div class="progress-top">
                     <span>লাইফ প্রগ্রেস (গড় আয়ু ৭৫ ধরে)</span>
-                    <span id="progress-pct" style="color: var(--accent-pink); font-weight: 700;">0%</span>
+                    <span id="progress-pct" style="color: var(--accent-pink); font-weight: 800;">0%</span>
                 </div>
                 <div class="progress-track">
                     <div class="progress-fill" id="progress-bar"></div>
                 </div>
-                <div class="progress-note" id="progress-msg">আপনার জীবনের অনেকটা সময় এখনো বাকি!</div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-val" id="stat-weeks" data-val="0">0</div>
-                    <div class="stat-desc">মোট সপ্তাহ পার করেছেন</div>
+                    <span class="stat-val" id="stat-weeks">0</span>
+                    <span class="stat-desc">মোট সপ্তাহ বেঁচে আছেন</span>
                 </div>
-                <div class="stat-item purple">
-                    <div class="stat-val" id="stat-sleep" data-val="0">0</div>
-                    <div class="stat-desc">ঘণ্টা ঘুমিয়ে কাটিয়েছেন</div>
-                    <div class="stat-sub-desc">(প্রতিদিন গড়ে ৮ ঘণ্টা ধরে)</div>
+                <div class="stat-item" style="border-color: rgba(168, 85, 247, 0.3);">
+                    <span class="stat-val" id="stat-sleep" style="color: var(--accent-purple);">0</span>
+                    <span class="stat-desc">ঘণ্টা ঘুমিয়ে কাটিয়েছেন <br><small>(প্রতিদিন ৮ ঘণ্টা গড়)</small></span>
                 </div>
-                <div class="stat-item purple" style="grid-column: 1 / -1;">
-                    <div class="stat-val" id="stat-beats" data-val="0" style="color: #f43f5e;">0</div>
-                    <div class="stat-desc">বার আপনার হৃৎপিণ্ড স্পন্দিত হয়েছে</div>
-                    <div class="stat-sub-desc">(গড়ে মিনিটে ৭০ বার স্পন্দন ধরে)</div>
+                <div class="stat-item" style="grid-column: 1 / -1; border-color: rgba(244, 63, 94, 0.3);">
+                    <span class="stat-val" id="stat-beats" style="color: var(--accent-pink);">0</span>
+                    <span class="stat-desc">বার আপনার হার্ট স্পন্দিত হয়েছে <br><small>(মিনিটে ৭০ বার গড়)</small></span>
                 </div>
             </div>
 
             <div class="fact-box">
-                🪐 <span class="hl">মহাজাগতিক বয়স:</span> মঙ্গলে (Mars) আপনার বয়স মাত্র <span id="mars-age" class="hl">০</span> বছর! কিন্তু বুধ গ্রহে (Mercury) আপনি <span id="mercury-age" class="hl">০</span> বছরের একজন বয়োজ্যেষ্ঠ মানুষ!
+                📱 <span class="hl">ডিজিটাল জীবন:</span> প্রতিদিন ৩ ঘণ্টা মোবাইল ব্যবহার ধরে, আপনার জীবনের <span id="screen-time" class="hl">০</span> বছর শুধু স্ক্রিন দেখেই পার হয়েছে!
+            </div>
+            
+            <div class="fact-box" style="border-left-color: var(--accent-pink);">
+                🎯 <span class="hl" style="color: var(--accent-pink);">প্রকৃত ফ্রি সময়:</span> গড় আয়ু ৭৫ বছর ধরে, প্রতিদিন ঘুম ও কাজের সময় বাদ দিলে স্বপ্ন পূরণের জন্য আপনার জীবনে পিওর ফ্রি সময় বাকি আছে আর মাত্র <span id="real-free-time" class="hl" style="color: var(--accent-pink);">...</span>! 
             </div>
 
-            <div class="fact-box" style="border-color: var(--accent-purple);">
-                🕰️ <span class="hl" style="color: var(--accent-purple);">ফ্ল্যাশব্যাক:</span> <span id="year-fact">আপনার জন্মের বছরটি একটি দারুণ বছর ছিল!</span>
+            <div class="fact-box" style="border-left-color: var(--accent-purple); margin-bottom: 0;">
+                📜 <span class="hl" style="color: var(--accent-purple);">ফ্যাক্ট:</span> <span id="year-fact">...</span>
             </div>
 
             <div id="watermark">
-                <div class="wm-brand">Created by <span>Md. Zahid Hasan</span></div>
-                <div class="wm-time" id="wm-time-display">Downloaded on: ...</div>
+                <div class="wm-text">Created by Md. Zahid Hasan</div>
+                <div class="wm-info" id="wm-date-time"></div>
             </div>
         </div>
 
@@ -238,35 +212,8 @@
     </div>
 
     <script>
-        // Prevent future dates in input
-        const todayStr = new Date().toISOString().split('T')[0];
-        document.getElementById('birthdate').setAttribute('max', todayStr);
-
-        // Fun facts dictionary based on year
-        const yearFacts = {
-            1971: "এই বছর স্বাধীন ও সার্বভৌম বাংলাদেশের জন্ম হয়!",
-            1990: "এই বছর ওয়ার্ল্ড ওয়াইড ওয়েব (WWW) এবং প্রথম ইন্টারনেট ব্রাউজার তৈরি হয়।",
-            1994: "এই বছর মার্ক জাকারবার্গ হার্ভার্ডে 'ফেসবুক' (TheFacebook) তৈরি করেন।",
-            1998: "এই বছর ল্যারি পেজ এবং সের্গেই ব্রিন মিলে 'গুগল' (Google) প্রতিষ্ঠা করেন।",
-            2004: "ফেসবুক আনুষ্ঠানিকভাবে যাত্রা শুরু করে।",
-            2005: "ইউটিউব (YouTube) এর যাত্রা শুরু হয় এবং প্রথম ভিডিও আপলোড করা হয়।",
-            2007: "স্টিভ জবস অ্যাপলের প্রথম 'আইফোন' (iPhone) পৃথিবীর সামনে উন্মোচন করেন।",
-            2009: "হোয়াটসঅ্যাপ (WhatsApp) এবং বিটকয়েন (Bitcoin) এর যাত্রা শুরু।",
-            2010: "ইন্সটাগ্রাম (Instagram) লঞ্চ করা হয়।",
-            2020: "কোভিড-১৯ প্যান্ডেমিকের কারণে পুরো পৃথিবী থমকে গিয়েছিল।"
-        };
-
         const fmt = (num) => Number(Math.round(num)).toLocaleString('en-BD');
 
-        // Formats Date & Time for Watermark
-        function getFormattedDateTime() {
-            const now = new Date();
-            const dateOpts = { day: '2-digit', month: 'short', year: 'numeric' };
-            const timeOpts = { hour: '2-digit', minute: '2-digit', hour12: true };
-            return `${now.toLocaleDateString('en-GB', dateOpts)} at ${now.toLocaleTimeString('en-US', timeOpts)}`;
-        }
-
-        // Number running animation logic
         function animateValue(obj, start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -274,156 +221,114 @@
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const currentVal = Math.floor(progress * (end - start) + start);
                 obj.innerHTML = fmt(currentVal);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerHTML = fmt(end); 
-                }
+                if (progress < 1) window.requestAnimationFrame(step);
+                else obj.innerHTML = fmt(end);
             };
             window.requestAnimationFrame(step);
         }
 
-        function getDecadeFact(year) {
-            if (yearFacts[year]) return yearFacts[year];
-            if (year < 1980) return "আপনার জন্মের দশকে মোবাইল ফোন এবং ইন্টারনেটের কোনো অস্তিত্বই মানুষের কল্পনায় ছিল না!";
-            if (year < 1990) return "আপনার জন্মের দশকে পার্সোনাল কম্পিউটার সবেমাত্র জনপ্রিয় হতে শুরু করেছিল।";
-            if (year < 2000) return "আপনার জন্মের দশকে ইন্টারনেট বিশ্বকে নতুনভাবে কানেক্ট করা শুরু করে।";
-            if (year < 2010) return "আপনার জন্মের দশকে স্মার্টফোন বিপ্লব শুরু হয় যা পুরো পৃথিবী বদলে দেয়।";
-            return "আপনার জন্মের দশকে প্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা (AI) চরম শিখরে পৌঁছাতে শুরু করেছে।";
-        }
-
         function analyzeLife() {
             const input = document.getElementById('birthdate').value;
-            const capArea = document.getElementById('capture-area');
-            const downBtn = document.getElementById('downloadBtn');
-
-            if (!input) {
-                alert("দয়া করে ক্যালেন্ডার থেকে আপনার জন্ম তারিখ সিলেক্ট করুন।");
-                return;
-            }
+            if (!input) return alert("দয়া করে জন্ম তারিখ দিন!");
 
             const birthDate = new Date(input);
             const today = new Date();
+            if (birthDate > today) return alert("ভবিষ্যতের তারিখ সম্ভব নয়!");
 
-            if (birthDate > today) {
-                alert("ভবিষ্যতের তারিখ দেওয়া যাবে না!");
-                return;
+            document.getElementById('capture-area').style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'flex';
+            window.scrollTo({ top: document.getElementById('capture-area').offsetTop - 20, behavior: 'smooth' });
+
+            // 1. Age Calc
+            let y = today.getFullYear() - birthDate.getFullYear();
+            let m = today.getMonth() - birthDate.getMonth();
+            let d = today.getDate() - birthDate.getDate();
+            if (d < 0) { m--; d += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); }
+            if (m < 0) { y--; m += 12; }
+
+            animateValue(document.getElementById('res-years'), 0, y, 1500);
+            animateValue(document.getElementById('res-months'), 0, m, 1500);
+            animateValue(document.getElementById('res-days'), 0, d, 1500);
+
+            // 2. Birthday Countdown
+            let next = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+            if (today > next && (today.getMonth() !== birthDate.getMonth() || today.getDate() !== birthDate.getDate())) {
+                next.setFullYear(next.getFullYear() + 1);
             }
+            let diffM = next.getMonth() - today.getMonth();
+            let diffD = next.getDate() - today.getDate();
+            if (diffD < 0) { diffM--; diffD += new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(); }
+            if (diffM < 0) diffM += 12;
 
-            capArea.style.display = 'block';
-            downBtn.style.display = 'flex';
+            const bText = document.getElementById('next-bday-text');
+            if (diffM === 0 && diffD === 0) bText.innerHTML = "🎉 আজ আপনার জন্মদিন! শুভ জন্মদিন! 🎂";
+            else bText.innerHTML = `${diffM > 0 ? `<span style="font-family:'Poppins'">${diffM}</span> মাস ` : ''}<span style="font-family:'Poppins'">${diffD}</span> দিন বাকি আছে!`;
+
+            // 3. Stats
+            const totalDays = Math.ceil(Math.abs(today - birthDate) / (1000 * 60 * 60 * 24));
+            animateValue(document.getElementById('stat-weeks'), 0, Math.floor(totalDays/7), 2000);
+            animateValue(document.getElementById('stat-sleep'), 0, totalDays * 8, 2000);
+            animateValue(document.getElementById('stat-beats'), 0, totalDays * 24 * 60 * 70, 2500);
+
+            // 4. Progress & Reality
+            let pct = ((y / 75) * 100).toFixed(1);
+            document.getElementById('progress-bar').style.width = Math.min(pct, 100) + '%';
+            document.getElementById('progress-pct').innerText = Math.min(pct, 100) + '%';
+
+            // Screen time
+            document.getElementById('screen-time').innerText = (totalDays * 3 / 24 / 365).toFixed(1);
             
-            setTimeout(() => { capArea.scrollIntoView({ behavior: 'smooth' }); }, 100);
+            // Solid Free Time Calc (Assuming 6 hours of actual free time out of 24)
+            let remYearsDec = Math.max(0, 75 - (y + m/12 + d/365));
+            let trueFreeYearsDec = remYearsDec * (6 / 24); // 25% of remaining life
+            let fYears = Math.floor(trueFreeYearsDec);
+            let fMonths = Math.floor((trueFreeYearsDec - fYears) * 12);
+            
+            let freeTimeText = "";
+            if (remYearsDec <= 0) freeTimeText = "০ দিন (গড় আয়ু অনুযায়ী)";
+            else freeTimeText = `${fYears > 0 ? fYears + " বছর " : ""}${fMonths} মাস`;
+            
+            document.getElementById('real-free-time').innerText = freeTimeText;
 
-            // 1. Basic Age Calc
-            let years = today.getFullYear() - birthDate.getFullYear();
-            let months = today.getMonth() - birthDate.getMonth();
-            let days = today.getDate() - birthDate.getDate();
-
-            if (days < 0) {
-                months--;
-                days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-            }
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            animateValue(document.getElementById('res-years'), 0, years, 1500);
-            animateValue(document.getElementById('res-months'), 0, months, 1500);
-            animateValue(document.getElementById('res-days'), 0, days, 1500);
-
-            // 2. Next Birthday Calc (Updated)
-            let nextBday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-            if (today > nextBday && (today.getMonth() !== birthDate.getMonth() || today.getDate() !== birthDate.getDate())) {
-                nextBday.setFullYear(nextBday.getFullYear() + 1);
+            // 5. Fact
+            const facts = { 
+                1971: "বাংলাদেশ স্বাধীন হওয়ার গৌরবময় বছর!", 
+                1990: "ওয়ার্ল্ড ওয়াইড ওয়েব (WWW) আবিষ্কারের বছর!",
+                1994: "আমাজন (Amazon) প্রতিষ্ঠার বছর!",
+                1998: "গুগল (Google) প্রতিষ্ঠার ঐতিহাসিক বছর!", 
+                2001: "উইকিপিডিয়া (Wikipedia) যাত্রা শুরু করে!",
+                2004: "ফেসবুক (Facebook) যাত্রা শুরুর বছর!", 
+                2005: "ইউটিউবের (YouTube) প্রথম ভিডিও আপলোডের বছর!",
+                2007: "অ্যাপলের প্রথম আইফোন (iPhone) উন্মোচনের বছর!",
+                2009: "হোয়াটসঅ্যাপ ও বিটকয়েনের যাত্রা শুরু হয়!"
+            };
+            
+            let bYear = birthDate.getFullYear();
+            let factText = facts[bYear];
+            if(!factText) {
+                if(bYear < 1990) factText = "আপনার জন্মের দশকে মোবাইল বা ইন্টারনেট বলতে কিছুই ছিল না!";
+                else if(bYear < 2000) factText = "আপনার জন্মের দশকে কম্পিউটার সবেমাত্র জনপ্রিয় হতে শুরু করে!";
+                else if(bYear < 2010) factText = "আপনার জন্মের দশকে স্মার্টফোন বিশ্বকে নতুন করে সাজায়!";
+                else factText = "আপনি এমন এক সময়ে জন্মেছেন যখন পৃথিবী প্রযুক্তির চরম শিখরে!";
             }
             
-            let bMonths = nextBday.getMonth() - today.getMonth();
-            let bDays = nextBday.getDate() - today.getDate();
-            
-            if (bDays < 0) {
-                bMonths--;
-                bDays += new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
-            }
-            if (bMonths < 0) {
-                bMonths += 12;
-            }
-
-            const bdayTextElem = document.getElementById('next-bday-text');
-            if (bMonths === 0 && bDays === 0) {
-                bdayTextElem.innerHTML = "🎉 আজ আপনার জন্মদিন! শুভ জন্মদিন! 🎂";
-                bdayTextElem.style.color = "var(--accent-green)";
-            } else {
-                let text = "";
-                if(bMonths > 0) text += `<span style="font-family:'Poppins'">${bMonths}</span> মাস `;
-                if(bDays > 0) text += `<span style="font-family:'Poppins'">${bDays}</span> দিন `;
-                text += "বাকি আছে!";
-                bdayTextElem.innerHTML = text;
-                bdayTextElem.style.color = "var(--accent-purple)";
-            }
-
-            // 3. Mind Blowing Stats
-            const diffTime = Math.abs(today - birthDate);
-            const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const totalWeeks = Math.floor(totalDays / 7);
-            const totalMinutes = totalDays * 24 * 60;
-            const sleepHours = totalDays * 8; 
-            const heartBeats = totalMinutes * 70; 
-
-            animateValue(document.getElementById('stat-weeks'), 0, totalWeeks, 2000);
-            animateValue(document.getElementById('stat-sleep'), 0, sleepHours, 2000);
-            animateValue(document.getElementById('stat-beats'), 0, heartBeats, 2500);
-
-            // 4. Life Progress Bar
-            let lifePct = ((years / 75) * 100).toFixed(1);
-            if (lifePct > 100) lifePct = 100;
-            
-            setTimeout(() => {
-                document.getElementById('progress-bar').style.width = lifePct + '%';
-                document.getElementById('progress-pct').innerText = lifePct + '%';
-            }, 500);
-
-            let pMsg = "জীবনটা অনেক সুন্দর, প্রতিটি মুহূর্ত উপভোগ করুন!";
-            if(lifePct < 30) pMsg = "আপনার সামনে দীর্ঘ এবং সুন্দর একটি ভবিষ্যৎ অপেক্ষা করছে!";
-            else if(lifePct < 60) pMsg = "আপনার জীবনের সেরা এবং সবচেয়ে প্রোডাক্টিভ সময় এখন চলছে!";
-            document.getElementById('progress-msg').innerText = pMsg;
-
-            // 5. Cosmic Age
-            const ageInDecimal = years + (months/12) + (days/365.25);
-            const marsAge = (ageInDecimal / 1.88).toFixed(1);
-            const mercuryAge = (ageInDecimal / 0.24).toFixed(1);
-            
-            document.getElementById('mars-age').innerText = marsAge;
-            document.getElementById('mercury-age').innerText = mercuryAge;
-
-            // 6. Time Machine Fact
-            document.getElementById('year-fact').innerText = getDecadeFact(birthDate.getFullYear());
+            document.getElementById('year-fact').innerText = factText;
         }
 
-        // Image Download
         function downloadCard() {
             const card = document.getElementById('capture-area');
             const watermark = document.getElementById('watermark');
-            const wmTime = document.getElementById('wm-time-display');
-            const btn = document.getElementById('downloadBtn');
+            const wmInfo = document.getElementById('wm-date-time');
             
-            // Set dynamic time and show watermark
-            wmTime.innerText = `Downloaded on: ${getFormattedDateTime()}`;
-            btn.innerHTML = "⏳ জেনারেট হচ্ছে...";
+            const now = new Date();
+            wmInfo.innerText = `Generated on: ${now.toLocaleDateString('en-GB')} at ${now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:true})}`;
+            
             watermark.style.display = 'block';
-
-            html2canvas(card, {
-                scale: 2, 
-                backgroundColor: "#1e293b",
-                useCORS: true
-            }).then(canvas => {
+            html2canvas(card, { scale: 2, backgroundColor: "#1e293b" }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'My-Life-Card.png';
-                link.href = canvas.toDataURL('image/png');
+                link.download = `Life_Report_ZahidHasan.png`;
+                link.href = canvas.toDataURL();
                 link.click();
-                
-                btn.innerHTML = "📸 লাইফ-কার্ড ডাউনলোড করুন";
                 watermark.style.display = 'none';
             });
         }
